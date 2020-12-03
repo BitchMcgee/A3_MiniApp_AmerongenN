@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App Amerongen</title>
+
+    <link rel="stylesheet" href=css/modules/main.css>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <main id="app">
+        <h1 @click="clickedHeader">{{ message }}</h1>
+        <p>{{ anotherMessage }} </p>
+
+        <!-- show the prof data in collection-->
+        <ul>
+            <!--This is a custom Cue component defined in main.js-->
+           <!-- <prof-card @showmydata="showProfData" v-for="prof in profs" :prof="prof" :key="prof.id"></prof-card> -->
+            <li class="display" v-for="car, index in cars">
+                <p v-on:click="logClicked">Car Name: {{ car.name }}, </p> <!--{{ car.showcase }}-->
+                <img v-on:click="logClicked" :src="'images'/ + car.showcase" alt="car image">
+                <a href="" class="remove-car" @click.prevent="showCarData(car)" :class="{'car-button-modifier' : removeAformat}">Show {{ car.name}}'s info</a>
+                <!--<a href="" class="remove-car" @click.prevent="removeCar(car)" :class="{'car-button-modifier' : removeAformat}">Remove {{ car.name}}</a> </li>-->
+        
+        </ul>
+<!--Show more section-->
+        <section class="spec-data" :class="{'show-spec' : showSpecData}">
+            <h1>{{ currentCarData.name }}</h1>
+            <p>{{ currentCarData.description }}</p>   
+        </section>
+
+    </main>
+
+ <!--   <form @submit.prevent="handleForm"></form> -->
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
